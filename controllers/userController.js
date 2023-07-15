@@ -19,7 +19,7 @@ const loginUser = asyncHandler(async (req, res) => {
             _id: user._id,
             name: user.name,
             email: user.email,
-            password: user.password,
+            isAdmin: user.isAdmin,
         });
     } else {
         res.status(401);
@@ -40,6 +40,11 @@ const registerUser = asyncHandler(async (req, res) => {
     if (existingUser) {
         res.status(400);
         throw new Error('User already exists');
+    }
+
+    if (!name || !email || !password) {
+        res.status(400);
+        throw new Error('All fields are required');
     }
 
     const user = await User.create({

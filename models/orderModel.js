@@ -19,6 +19,7 @@ const orderSchema = new Schema(
                     required: true,
                     ref: 'Product',
                 },
+                fadi: { type: String, required: false, default: 'none' }
             }
         ],
         shippingAddress: {

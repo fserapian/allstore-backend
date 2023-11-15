@@ -3,12 +3,17 @@ const { Schema } = mongoose;
 
 const reviewSchema = new Schema(
     {
-        name: {
+        userId: {
+            type: mongoose.Types.ObjectId,
+            required: true,
+            ref: 'User',
+        },
+        userName: {
             type: String,
             required: true,
         },
         rating: {
-            type: String,
+            type: Number,
             required: true,
         },
         comment: {
